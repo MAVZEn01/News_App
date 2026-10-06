@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/data/model/news_model.dart';
 import 'package:news_app/features/view/screens/home_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var arg = ModalRoute.of(context)?.settings.arguments as Article;
     return Scaffold(
       backgroundColor: Color(0xff202020),
       appBar: AppBar(
@@ -28,10 +30,10 @@ class DetailsScreen extends StatelessWidget {
 
           children: [
             SizedBox(height: 30),
-            ImageNews(height: 250),
+            ImageNews(height: 250, image: arg.urlToImage ?? image),
             SizedBox(height: 30),
             Text(
-              "Cristiano Ronaldo confirms decision on club future after epic Nations League triumph",
+              arg.title ?? "",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: .w400,
@@ -40,7 +42,7 @@ class DetailsScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              "TheGoat",
+              arg.title ?? "",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: .w400,
@@ -49,7 +51,7 @@ class DetailsScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              "Cristiano Ronaldo confirms decision on club future after epic Nations League triumph",
+              arg.content ?? "",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: .w400,
